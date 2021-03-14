@@ -1,0 +1,44 @@
+\documentclass{report}
+
+\usepackage{fontspec}
+
+\usepackage[svgnames]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	breaklinks,
+	linkcolor=DarkSlateBlue,
+	citecolor=DarkOrchid,
+	urlcolor=DarkSlateBlue,
+}
+
+\usepackage{amsmath}
+
+\usepackage[numberedsection, acronym]{glossaries-extra}
+\usepackage[backend=biber]{biblatex}
+
+\usepackage{minted}
+\usepackage[protrusion=true,expansion]{microtype}
+
+\makeglossaries
+\input{common/acronym}
+
+\title{Machine learning}
+\author{Benjamin Boboul}
+\date{compiled on \today}
+
+\begin{document}
+	\maketitle
+
+	\begin{abstract}
+	This document gathers all my notes about \textit{Machine Learning}. The goal here is to share my work and to commit myself into the redaction of a proper document. If my work is useful to you, or if some concepts are missing, please let me know.
+	\end{abstract}
+
+	\chapter{Machine learning vs Deep learning}
+	
+
+	\chapter{Support vector machines}
+	\input{notes/machine-learning/svm/svm}
+
+	\printglossaries
+\end{document}

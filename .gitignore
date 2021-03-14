@@ -1,0 +1,17 @@
+*.aux
+*.alg
+*.acr
+*.acn
+*.bbl
+*.bcf
+*.blg
+*.glg
+*.glo
+*.gls
+*.ist
+*.log
+*.out
+*.run.xml
+*.pdf
+_minted*
+

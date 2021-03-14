@@ -1,0 +1,65 @@
+\gls{SVM} is a supervised machine learning algorithm which can be used for both classification or regression\footnote{It is mostly used in classification problems}. In this chapter we will mostly focus on the classification case for linear separable and non-separables cases.
+
+\paragraph{}
+The main concept in \gls{SVM} is based on finding an hyperplane $h$ optimized to categorize new examples. In other terms, \gls{SVM} goal is to find an hyperplane whose distance to the nearest element of each tag is the largest.
+
+\paragraph{Applications}
+\gls{SVM}s can be used to solde various real-worl problems:
+\begin{itemize}
+	\item \gls{SVM}s are helpful in text and hypertext categorization, as their application can significantly reduce the need for labeled training instances in both the standard inductive and transductive settings.
+	\item Classification of images
+	\item Classification of satellite data
+	\item Hand-written characters can be recognized using SVM
+	\item Proteins classification
+\end{itemize}
+
+\section{Introduction}
+
+In this case, we will focus on binary classification problems. Let's consider a weight vector $\mathbf w = \langle \begin{matrix} w_1 & \dots & w_N \end{matrix} \rangle^T$, an entry vector $\mathbf x = \langle \begin{matrix} x_1 & \dots & x_N \end{matrix} \rangle^T$ and an biais $b$ which is basically just a real number.
+
+\begin{equation}
+	h(\mathbf x) = \mathbf w^T\mathbf x + b
+\end{equation}
+
+From this equation, we can determine whether or not a new entry vector $\mathbf x$ belongs to which class. If $h(\mathbf x) \geq 0$then $\mathbf x$ is marked as positive and vice versa:
+
+\begin{equation}
+	h(\mathbf x) = \begin{cases}
+		\geq 0, 1 \\
+		< 0, -1
+	\end{cases}
+\end{equation}
+
+Distance between a node and our hyperlan :
+\begin{equation}
+	d_{\mathbf w, b}(p) = \frac{| \mathbf w p + b |}{\lVert \mathbf w \rVert}, \quad \lVert \mathbf w \rVert = \sqrt{\sum_{i=1}^N x_i^2}
+\end{equation}
+
+
+\begin{equation}
+	\min_{w,b} \max_{i\in m} \frac{ l_k(\mathbf w^T\mathbf x_k+b) }{ \lVert \mathbf w \rVert }
+\end{equation}
+
+\begin{equation}
+	\min_{w,b,\xi} \frac{1}{2} \lVert \mathbf w \rVert ^2 + C \sum_{i=1}^m \xi_i^p
+\end{equation}
+
+
+\section{Kernel trick}
+
+Here is a non-exhaustive list of different kernels available to our case:
+\begin{description}
+	\item[Polynomial] $K(x, x\prime) = (\alpha x^T x\prime + \lambda )^d$
+	\item[Gaussien] $K(x, x\prime) = \exp(-\frac{\lVert x - x\prime \rVert^2}{2\sigma^2})$
+	\item[Laplacien] $K(x, x\prime) = \exp(-\frac{\lVert x - x\prime\rVert}{\sigma}$
+	\item[Rationnel] $K(x, x\prime) = 1 - \frac{\lVert x\prime - x \rVert^2}{\lVert x\prime - x \rVert^2 + \sigma}$
+\end{description}
+
+
+\section{Python implementation}
+
+\subsection{Classification}
+
+\inputminted{python}{code/svm.python}
+
+\subsection{Regression}
