@@ -14,4 +14,4 @@
 *.run.xml
 *.pdf
 _minted*
-
+*.swp

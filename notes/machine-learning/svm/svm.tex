@@ -16,32 +16,45 @@ The main concept in \gls{SVM} is based on finding an hyperplane $h$ optimized to
 \section{Introduction}
 
 In this case, we will focus on binary classification problems. Let's consider a weight vector $\mathbf w = \langle \begin{matrix} w_1 & \dots & w_N \end{matrix} \rangle^T$, an entry vector $\mathbf x = \langle \begin{matrix} x_1 & \dots & x_N \end{matrix} \rangle^T$ and an biais $b$ which is basically just a real number.
+From this equation, we can determine whether or not a new entry vector $\mathbf x$ belongs to which class.
+If $h(\mathbf x) \geq 0$ then $\mathbf x$ is marked as positive and vice versa:
+
 
 \begin{equation}
-	h(\mathbf x) = \mathbf w^T\mathbf x + b
+	h(\mathbf x) = \mathbf w^T\mathbf x + b \begin{cases}h(\mathbf x)\geq 0\to \text{class 1} \\h(\mathbf x)< 0\to \text{class 2}\end{cases}
 \end{equation}
 
-From this equation, we can determine whether or not a new entry vector $\mathbf x$ belongs to which class. If $h(\mathbf x) \geq 0$then $\mathbf x$ is marked as positive and vice versa:
+\subsection{Train SVMs}
+
+An hyperplane try to maximize margin, in other terms, the minimal distance between training vectors and hyperplane. Thoses training vectors located at this minimal distance are called \textit{support vectors}.
+
+\paragraph{Compute margin}
+
+Given a vector $\mathbf x_k$, we can compute its distance with $h_{w,b}$ :
 
 \begin{equation}
-	h(\mathbf x) = \begin{cases}
-		\geq 0, 1 \\
-		< 0, -1
-	\end{cases}
+	\frac{l_k(\mathbf w^T\mathbf x_k + b)}{\lVert \mathbf w \rVert}
 \end{equation}
 
-Distance between a node and our hyperlan :
+where $\lVert \mathbf w \rVert$ is the euclidian distance, the general formula regardless of the size of the dimensions ($N$) is given by:
 \begin{equation}
-	d_{\mathbf w, b}(p) = \frac{| \mathbf w p + b |}{\lVert \mathbf w \rVert}, \quad \lVert \mathbf w \rVert = \sqrt{\sum_{i=1}^N x_i^2}
+	\lVert \mathbf w \rVert = \sqrt{\sum_{i=1}^N x_i^2}
 \end{equation}
 
+The margin of an hyperplane is the smallest distance to one of the support vector and it's obtain by computing the following formula:
 
 \begin{equation}
-	\min_{w,b} \max_{i\in m} \frac{ l_k(\mathbf w^T\mathbf x_k+b) }{ \lVert \mathbf w \rVert }
+	\min_k \frac{l_k(\mathbf w^T\mathbf x_k + b)}{\lVert \mathbf w \rVert}
+\end{equation}
+
+Since we're looking to maximize margin, \textit{find the hyperplane with the largest margin}, we'll keep the maximum value in functions of $w$ and $b$ with the following equation:
+
+\begin{equation}
+	\arg\max_{w,b}\min_k \frac{l_k(\mathbf w^T\mathbf x_k + b)}{\lVert \mathbf w \rVert}
 \end{equation}
 
 \begin{equation}
-	\min_{w,b,\xi} \frac{1}{2} \lVert \mathbf w \rVert ^2 + C \sum_{i=1}^m \xi_i^p
+	\min_{w,b,\xi} \frac{1}{2} \lVert \mathbf w \rVert ^2 + C\sum_{i=1}^m \xi_i^p
 \end{equation}
 
 
@@ -60,6 +73,9 @@ Here is a non-exhaustive list of different kernels available to our case:
 
 \subsection{Classification}
 
-\inputminted{python}{code/svm.python}
+\inputminted{python}{code/machine-learning/svc.py}
 
 \subsection{Regression}
+
+\inputminted{python}{code/machine-learning/svr.py}
+

@@ -12,6 +12,8 @@
 	urlcolor=DarkSlateBlue,
 }
 
+\usepackage[regular, semibold, ligatures=TeX]{sourcecodepro}
+
 \usepackage{amsmath}
 
 \usepackage[numberedsection, acronym]{glossaries-extra}
@@ -19,6 +21,19 @@
 
 \usepackage{minted}
 \usepackage[protrusion=true,expansion]{microtype}
+
+
+\setminted{
+    breaklines,
+    fontsize=\tiny,
+    framesep=2mm,
+    mathescape,
+    autogobble,
+    style=tomorrow-day,
+    frame=single,
+    rulecolor=gray,
+    tabsize=2
+}
 
 \makeglossaries
 \input{common/acronym}
