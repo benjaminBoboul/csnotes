@@ -1,7 +1,9 @@
-\gls{SVM} is a supervised machine learning algorithm which can be used for both classification or regression\footnote{It is mostly used in classification problems}. In this chapter we will mostly focus on the classification case for linear separable and non-separables cases.
+\gls{SVM} est un algorithme de \textit{machine learning} utilisé pour la classification et la prédiction de données\footnote{Nous dénoterons cependant une utilisation plus fréquente dans des problèmes de classification.}. 
+Dans ce chapitre nous verrons le fonctionnement de cet algorithme dans le cadre d'une classification linéairement séparable et non-linéairement séparable.
 
 \paragraph{}
-The main concept in \gls{SVM} is based on finding an hyperplane $h$ optimized to categorize new examples. In other terms, \gls{SVM} goal is to find an hyperplane whose distance to the nearest element of each tag is the largest.
+The main concept in \gls{SVM} is based on finding an hyperplane $h$ optimized to categorize new examples.
+In other terms, \gls{SVM} goal is to find an hyperplane whose distance to the nearest element of each tag is the largest.
 
 \paragraph{Applications}
 \gls{SVM}s can be used to solde various real-worl problems:
@@ -15,10 +17,10 @@ The main concept in \gls{SVM} is based on finding an hyperplane $h$ optimized to
 
 \section{Introduction}
 
-In this case, we will focus on binary classification problems. Let's consider a weight vector $\mathbf w = \langle \begin{matrix} w_1 & \dots & w_N \end{matrix} \rangle^T$, an entry vector $\mathbf x = \langle \begin{matrix} x_1 & \dots & x_N \end{matrix} \rangle^T$ and an biais $b$ which is basically just a real number.
+In this case, we will focus on binary classification problems.
+Let's consider a weight vector $\mathbf w = \langle \begin{matrix} w_1 & \dots & w_N \end{matrix} \rangle^T$, an entry vector $\mathbf x = \langle \begin{matrix} x_1 & \dots & x_N \end{matrix} \rangle^T$ and an biais $b$ which is basically just a real number.
 From this equation, we can determine whether or not a new entry vector $\mathbf x$ belongs to which class.
 If $h(\mathbf x) \geq 0$ then $\mathbf x$ is marked as positive and vice versa:
-
 
 \begin{equation}
 	h(\mathbf x) = \mathbf w^T\mathbf x + b \begin{cases}h(\mathbf x)\geq 0\to \text{class 1} \\h(\mathbf x)< 0\to \text{class 2}\end{cases}
@@ -26,7 +28,8 @@ If $h(\mathbf x) \geq 0$ then $\mathbf x$ is marked as positive and vice versa:
 
 \subsection{Train SVMs}
 
-An hyperplane try to maximize margin, in other terms, the minimal distance between training vectors and hyperplane. Thoses training vectors located at this minimal distance are called \textit{support vectors}.
+An hyperplane try to maximize margin, in other terms, the minimal distance between training vectors and hyperplane.
+Thoses training vectors located at this minimal distance are called \textit{support vectors}.
 
 \paragraph{Compute margin}
 
