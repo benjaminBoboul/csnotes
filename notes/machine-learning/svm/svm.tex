@@ -2,11 +2,12 @@
 Dans ce chapitre nous verrons le fonctionnement de cet algorithme dans le cadre d'une classification linéairement séparable et non-linéairement séparable.
 
 \paragraph{}
-The main concept in \gls{SVM} is based on finding an hyperplane $h$ optimized to categorize new examples.
-In other terms, \gls{SVM} goal is to find an hyperplane whose distance to the nearest element of each tag is the largest.
+
+Dans un objectif de classification, l'utilisation de \gls{SVM} se résume à trouver un hyperplan dans un environnement à $N$ dimensions optimisé pour classification de nouvelles données.
+En d'autres termes, nous souhaitons trouver un hyperplan dont la distance aux aux éléments les plus proches est la plus grande.
 
 \paragraph{Applications}
-\gls{SVM}s can be used to solde various real-worl problems:
+Nous retrouvons diverses utilisations de \gls{SVM} dans la résolutions de problèmes tels que : 
 \begin{itemize}
 	\item \gls{SVM}s are helpful in text and hypertext categorization, as their application can significantly reduce the need for labeled training instances in both the standard inductive and transductive settings.
 	\item Classification of images
@@ -17,8 +18,7 @@ In other terms, \gls{SVM} goal is to find an hyperplane whose distance to the ne
 
 \section{Introduction}
 
-In this case, we will focus on binary classification problems.
-Let's consider a weight vector $\mathbf w = \langle \begin{matrix} w_1 & \dots & w_N \end{matrix} \rangle^T$, an entry vector $\mathbf x = \langle \begin{matrix} x_1 & \dots & x_N \end{matrix} \rangle^T$ and an biais $b$ which is basically just a real number.
+Pour commencer nous parlerons de classification binaire (classe 0 et classe 1). Considérons un vecteur de poids $\mathbf w = \langle \begin{matrix} w_1 & \dots & w_N \end{matrix} \rangle^T$, un vecteur d'entrée $\mathbf x = \langle \begin{matrix} x_1 & \dots & x_N \end{matrix} \rangle^T$ ainsi qu'un biais $b$ qui se révèle être un nombre réel.
 From this equation, we can determine whether or not a new entry vector $\mathbf x$ belongs to which class.
 If $h(\mathbf x) \geq 0$ then $\mathbf x$ is marked as positive and vice versa:
 
