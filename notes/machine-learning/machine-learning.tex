@@ -14,6 +14,7 @@
 }
 
 \usepackage[regular, semibold, ligatures=TeX]{sourcecodepro}
+\usepackage[default]{sourceserifpro}
 
 \usepackage{amsmath}
 
@@ -41,7 +42,7 @@
 
 \title{Machine learning}
 \author{Benjamin Boboul}
-\date{compiled on \today}
+\date{\today}
 
 \begin{document}
 	\maketitle
@@ -62,112 +63,10 @@
 
 	\chapter{Support vector machines}
 	\input{notes/machine-learning/svm/svm}
+	\input{notes/machine-learning/ann/ann}
+	\input{notes/machine-learning/cnn/cnn}
+	\input{notes/machine-learning/rnn/rnn}
 
-	\chapter{Réseaux de neurones}
-
-	\section{Artificial Neural Network}
-	
-	En 1957, un dénomé Rosenblatt Franck met au point le premier neurone électronique inspiré par son égal biologique.
-	L'idée qui se cache derrière le neurone est de proposer un algorithme qui apprends et s'auto-ajuste de lui-même.
-	
-	\subsection{Le neurone}
-	
-	Du point de vue de la machine, un neurone est un n\oe ud qui dispose d'un ensemble de signaux en entrée et produit un signal de sortie.
-	Chaque lien entre un signal d'entré de notre n\oe ud est appelé \textit{synapse}.
-	
-	\begin{figure}[ht]	
-		\centering
-		\begin{tikzpicture}
-			\node[circle, draw] (n) at (2,2) {n\oe ud};
-			\node[circle, draw] (y) at (4, 2) {$y$};
-			\foreach \y in {1,2,3} {
-				\node[circle, draw] (x-\y) at (0, 4-\y) {$x_\y$};
-				\draw[->] (x-\y) -- node[sloped, above, midway] {$w_\y$} (n);
-			}
-			\draw[->] (n) -> (y);
-		\end{tikzpicture}
-		\caption{Représentation du réseau de neurone formel}
-	\end{figure}
-	
-	Ces synapes ont chacun un ``poids'' $w$ qui leur est attribué.
-	Le n\oe ud fait alors une somme pondérée des signaux d'entrée par le poids de leur synapse $\sum_{i=1}^m w_i x_i$ puis utilise une fonction d'activation $\phi$ dont le résultat est envoyé au signal de sortie $y$.
-
-	\begin{equation}
-		y = \phi\left(\sum_{i=1}^m w_i x_i \right)
-	\end{equation}
-
-	\paragraph{Fonction d'activation}
-	Nous pouvons citer les fonctions d'activation les plus répandues : \textit{la fonction seuil}, \textit{la fonction sigmo\"ide}, \textit{la fonction tanh}, etc.
-	\begin{equation}
-		\phi_\text{seuil}(x) =
-		\begin{cases}
-			1 \text{ si } x \geq 0 \\
-			0 \text{ si } x < 0
-		\end{cases} \qquad
-		\phi_\text{redresseur}(x) = \max(x, 0)
-	\end{equation}
-	\begin{equation}
-		\phi_\text{sigmo\"ide}(x) = \frac{1}{1+\exp(-x)} \qquad
-		\phi_\text{tanh}(x) = \frac{1-\exp(-2x)}{1+\exp(-2x)}
-	\end{equation}
-
-	\paragraph{Phase d'apprentissage}
-	Au cours de son entraînement, nous donnons à notre neurone un vecteur d'entrés $x$ de taille $m$ pour obtenir un résultat $\hat y$.
-	Nous faisons par la suite une comparaison entre la valeur souhaité $y$ et la valeur obtenue $\hat y$ à l'aide d'une fonction de coût $C$.
-	Ici l'équation~\ref{eq:cost_function_1} est un exemple de fonction utilisé dans des réseaux de neurones.
-	
-	\begin{equation}
-		\label{eq:cost_function_1} C = \frac{1}{2}(y-\hat y)^2
-	\end{equation}
-
-    L'objectif est de minimiser cette fonction de coût $C$ dont la valeur sert à ajuster les ``poids'' $w$ sur les différents synapses.
-\begin{figure}[ht]	
-		\centering
-		\begin{tikzpicture}
-			\node[circle, draw] (n) at (2,2) {n\oe ud};
-			\node[circle, draw] (y) at (4, 2) {$\hat y$};
-			\node[circle, draw, dashed] (y2) at (4, 1) {$y$};
-			\node[right=.5cm] at (y) {\small valeur obtenue};
-			\node[right=.5cm] at (y2) {\small valeur attendue};
-			\draw[->] (y2) -- (y);
-
-			\foreach \y in {1,2,3} {
-				\node[circle, draw] (x-\y) at (0, 4-\y) {$x_\y$};
-				\draw[->] (x-\y) -- node[sloped, above, midway] {$w_\y$} (n);
-			}
-			\draw[->] (n) -> (y);
-
-			\draw[->, dotted] (-.2, .4) -- node[midway, below] {\textit{propagation}} (4.2, .4);
-			\draw[<-, dotted] (-.2, -.2) -- node[midway, below] {\textit{retro-propagation}} (4.2, -.2);
-		\end{tikzpicture}
-		\caption{Représentation du réseau de neurone formel}
-	\end{figure}
-	Lorsque les données parcourent le réseau de neurones de gauche à droite on parle alors de \textit{propagation}.
-	Tandis que lors de l'ajustement des poids, les données remontent le réseau de neurones de droite à gauche et nous parlons alors de \textit{retro-propagation}.
-
-	\paragraph{Algorithme du gradient}
-	Calcul de la dérivé d'une fonction pour en trouver un résultat optimal
-
-	\subparagraph{Algorithme du gradient stochastique}
-	Au lieu de reévaluer les poids pour un epoch donné, l'algorithme du gradient stochastique va les modifier dès la première évaluation et ainsi de suite.
-
-	\subsection{Conception d'un réseau de neurones}
-	Dans cette partie, nous allons mettre en \oe uvre un \gls{ANN} à l'aide de python.
-
-	\input{notes/machine-learning/cnn/cnn}	
-	\section{Recurent Neural Network}
-	
-	\gls{RNN}
-	Réseau de neurones avec une boucle temporelle.
-	La couche cachée produit une sortie à la fois vers le dernier niveau mais renvoit également sa sortie dans son entrée.
-
-	\paragraph{One to Many}
-
-	\paragraph{Many to One}
-
-	\subsection{LSTM}
-
-	\gls{LSTM}
-
+	\tableofcontents
 	\printglossaries
 \end{document}
