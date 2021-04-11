@@ -13,7 +13,7 @@ classifier = svm.SVC()
 classifier.fit(x_entry, y_label)
 
 # After being fitted, the model can then be used to predict new values:
-classifier.predict([[2., 2.]])
+classifier.predict([[2.0, 2.0]])
 # -> array([1])
 
 # get support vectors
@@ -29,21 +29,28 @@ plt.scatter(x_entry[:, 0], x_entry[:, 1], c=y_label, s=30, cmap=plt.cm.Paired)
 
 # plot the decision function
 ax = plt.gca()
-xlim = ax.get_xlim()
-ylim = ax.get_ylim()
+x_lim = ax.get_xlim()
+y_lim = ax.get_ylim()
 
 # create grid to evaluate model
-x_axis = np.linspace(xlim[0], xlim[1], 30)
-y_axis = np.linspace(ylim[0], ylim[1], 30)
+x_axis = np.linspace(x_lim[0], x_lim[1], 30)
+y_axis = np.linspace(y_lim[0], y_lim[1], 30)
 YY, XX = np.meshgrid(y_axis, x_axis)
 xy = np.vstack([XX.ravel(), YY.ravel()]).T
 Z = classifier.decision_function(xy).reshape(XX.shape)
 
 # plot decision boundary and margins
-ax.contour(XX, YY, Z, colors='k', levels=[-1, 0, 1], alpha=0.5,
-           linestyles=['--', '-', '--'])
-ax.scatter(support_vectors[:, 0], support_vectors[:, 1], s=100,
-           linewidth=1, facecolors='none', edgecolors='k')
+ax.contour(
+    XX, YY, Z, colors="k", levels=[-1, 0, 1], alpha=0.5, linestyles=["--", "-", "--"]
+)
+ax.scatter(
+    support_vectors[:, 0],
+    support_vectors[:, 1],
+    s=100,
+    linewidth=1,
+    facecolors="none",
+    edgecolors="k",
+)
 
 
 plt.show()

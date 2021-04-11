@@ -1,9 +1,8 @@
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.metrics import plot_confusion_matrix
-from sklearn.tree import plot_tree
 import matplotlib.pyplot as plt
 import pandas as pd
 from rich.console import Console
@@ -22,14 +21,12 @@ iris_dataframe = pd.DataFrame(x_train, columns=iris_dataset.feature_names)
 console.rule("Iris dataset")
 console.print(iris_dataframe)
 
-# Create the model & train it
-model = DecisionTreeClassifier()
+model = RandomForestClassifier()
 model.fit(x_train, y_train)
 
-# Once trained, we can use our model to predict the classes of remaining data (our 20% used to test our model)
 predictions = model.predict(x_test)
 
-console.rule("Classification results")
+console.rule("Classifications result")
 console.print(classification_report(y_test, predictions))
 
 features_importance = pd.DataFrame(
@@ -42,8 +39,4 @@ console.rule("Features importance")
 console.print(features_importance)
 
 plot_confusion_matrix(model, x_test, y_test)
-plt.show()
-
-plt.figure(figsize=(12, 8), dpi=200)
-plot_tree(model, feature_names=iris_dataframe.columns, filled=True)
 plt.show()
