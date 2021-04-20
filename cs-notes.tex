@@ -1,0 +1,88 @@
+%! Author = benjamin
+
+% Preamble
+\documentclass[11pt]{memoir}
+
+% Packages
+\usepackage{fontspec}
+\usepackage[french]{babel}
+\usepackage{subfiles}
+\usepackage[numberedsection, acronym]{glossaries-extra}
+\usepackage[backend=biber]{biblatex}
+\usepackage[protrusion=true,expansion]{microtype}
+
+\setmonofont{JetBrainsMono-Regular}[
+    Path = fonts/jetbrains/,
+    Extension = .ttf,
+    BoldFont = JetBrainsMono-Bold,
+    ItalicFont = JetBrainsMono-Italic,
+    BoldItalicFont = JetBrainsMono-BoldItalic
+]
+
+\setsansfont{IBMPlexSans-Regular}[
+    Path = fonts/ibm-plex/,
+    Extension = .ttf,
+    BoldFont = IBMPlexSans-Bold,
+    ItalicFont = IBMPlexSans-Italic,
+    BoldItalicFont = IBMPlexSans-BoldItalic
+]
+
+\setmainfont{IBMPlexSerif-Regular}[
+    Path = fonts/ibm-plex/,
+    Extension = .ttf,
+    BoldFont = IBMPlexSerif-Bold,
+    ItalicFont = IBMPlexSerif-Italic,
+    BoldItalicFont = IBMPlexSerif-BoldItalic
+]
+
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\usepackage{minted}
+\usepackage{amsmath}
+
+
+% Settings
+\hypersetup{
+    colorlinks,
+    breaklinks,
+    linkcolor=DarkSlateBlue,
+    citecolor=DarkOrchid,
+    urlcolor=DarkSlateBlue,
+}
+
+\setminted{
+    breaklines,
+    fontsize=\tiny,
+    framesep=2mm,
+    mathescape,
+    autogobble,
+    style=algol_nu,
+    frame=single,
+    rulecolor=gray,
+    tabsize=2
+}
+\makeglossaries
+\input{common/acronym.tex}
+
+% Document data
+
+\title{Computer Science}
+\author{Benjamin Boboul}
+\date{\today}
+
+% Document
+\begin{document}
+    \frontmatter
+    \maketitle
+
+    \mainmatter
+    \subfile{notes/machine-learning/machine-learning.tex}
+
+    \backmatter
+    \tableofcontents
+    \listoffigures
+    \listoftables
+    \printglossaries
+\end{document}

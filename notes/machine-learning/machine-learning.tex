@@ -1,44 +1,4 @@
-\documentclass{report}
-
-\usepackage{fontspec}
-\usepackage[french]{babel}
-\usepackage[svgnames]{xcolor}
-\usepackage{tikz}
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks,
-	breaklinks,
-	linkcolor=DarkSlateBlue,
-	citecolor=DarkOrchid,
-	urlcolor=DarkSlateBlue,
-}
-
-\usepackage[regular, semibold, ligatures=TeX]{sourcecodepro}
-\usepackage[default]{sourceserifpro}
-
-\usepackage{amsmath}
-
-\usepackage[numberedsection, acronym]{glossaries-extra}
-\usepackage[backend=biber]{biblatex}
-
-\usepackage{minted}
-\usepackage[protrusion=true,expansion]{microtype}
-
-
-\setminted{
-    breaklines,
-    fontsize=\tiny,
-    framesep=2mm,
-    mathescape,
-    autogobble,
-    style=tomorrow-day,
-    frame=single,
-    rulecolor=gray,
-    tabsize=2
-}
-
-\makeglossaries
-\input{common/acronym}
+\documentclass[../../cs-notes.tex]{subfiles}
 
 \title{Machine learning}
 \author{Benjamin Boboul}
@@ -47,15 +7,16 @@
 \begin{document}
 	\maketitle
 
-	\begin{abstract}
-	Ce document concatène un ensemble de notes diverses portant sur le \textit{Machine Learning}.
+	Ce document concat\`ene un ensemble de notes diverses portant sur le \textit{Machine Learning}.
 	C'est une manière pour moi de m'engager dans l'apprentissage de ce domaine et de garder une trace de mes progrès.
-	Si ce document se révèle vous être utile ou que vous remarquez des erreurs de ma part, merci de me communiquer toutes remarques.
+	Si ce document se r\'ev\`ele vous être utile ou que vous remarquez des erreurs de ma part, merci de me communiquer toutes remarques.
 	Contact: benjamin.boboul@imt-lille-douai.org
-	\end{abstract}
 
+	\part{Supervised learning}
 
-	\input{notes/machine-learning/introduction}
+	\input{notes/machine-learning/introduction.tex}
+	\input{notes/machine-learning/linear-regression/linear-regression}
+	\input{notes/machine-learning/logistic-regression/logistic-regression}
 	\input{notes/machine-learning/knn/knn}
 	\input{notes/machine-learning/svm/svm}
 	\input{notes/machine-learning/tree-based-methods/decision-tree}
@@ -64,6 +25,39 @@
 	\input{notes/machine-learning/cnn/cnn}
 	\input{notes/machine-learning/rnn/rnn}
 
-	\tableofcontents
-	\printglossaries
+	\part{Unsupervised learning}
+
+	À la différence de l'apprentissage supervisé, nos données ne disposent pas de labels.
+	Impossible donc d'entraîner un algorithme en fonction d'une valeur attendue, cette solution permet cependant d'identifier des motifs dans notre jeu de données.
+
+	\paragraph{Application d'apprentissage non-supervisé}
+	Parmis les applications d'apprentissage non-supervisé, nous allons dénoter une utilisation plus fréquente dans le cadre de la détection d'anomalies et la segmentation en groupe.
+
+	\subparagraph{Anomaly Detection} Les système de détections d'anomalies sont utilisé pour repérer des fraudes ou des évènements qui dénotent d'une certaine tendance.
+
+	\subparagraph{Group segmentation}
+	Les algorithmes de segmentation sont utilisé pour classifier du contenu, des données en fonction de leurs similarités.
+
+	\chapter{Réduction de dimensions}
+	\section{Projection linéaire}
+	\section{Manifold Learning}
+
+
+	\chapter{Clustering}
+	Utiliser un algorithme de \textit{clustering} vise à identifier différentes classes d'un jeu de données. Pour ce faire, on identifie plusieurs sous-ensembles que l'on groupe en fonction de leurs similarités.
+
+	\section{K-means}
+
+
+	\section{DBSCAN}
+	\textsc{dbscan} utilise un paramètre \textit{min\_samples} pour identifier les sous-ensembles de taille suffisante. Si deux sous-ensembles sont à proximité, celui dont la densité est la plus grande l'emporte sur le second.
+
+
+	\chapter{Feature Extraction}
+
+	\section{Autoencoders}
+
+	\input{notes/machine-learning/unsupervised/SOM/SOM}
+
+
 \end{document}

@@ -7,8 +7,8 @@ La couche cachée produit une sortie à la fois vers le dernier niveau mais renv
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}
-		\draw[dashed, gray] (0, 0) rectangle (5, 3);
-		
+		\draw[rounded corners=4.5pt] (0, 0) rectangle (5, 3);
+
 		\node[circle, draw] (node) at (2.5, 2.5) {};
 		\node (stackfunc) at (2.5, 1.5) {stack};
 		\node (outputfunc) at (3.5, 2.5) {tanh};
@@ -18,12 +18,16 @@ La couche cachée produit une sortie à la fois vers le dernier niveau mais renv
 		\draw[->] (stackfunc) -- (node);
 		\draw[->] (entry) -- (stackfunc);
 	\end{tikzpicture}
+	\caption{Représentation simplifiée d'un réseau de neurones récurrent}
 \end{figure}
 
 \paragraph{One to Many}
 
 \paragraph{Many to One}
 
-\subsection{LSTM}
+\subsection{\gls{LSTM}}
 
-\gls{LSTM}
+\paragraph{forget gate}
+\begin{equation}
+	f_t = \sigma(W_f [h_{t-1}, x_t] + b_f)
+\end{equation}

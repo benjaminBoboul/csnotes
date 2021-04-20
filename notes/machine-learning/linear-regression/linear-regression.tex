@@ -1,0 +1,22 @@
+\chapter{R\'egression lin\'eaire}
+
+
+Un régression linéaire simple fait référence à la formule suivante : $y = b_0 + b_1 * x_1$. 
+
+L'outil \textit{scikit-learn} propose via sa classe \textit{LinearRegression} l'approche \textit{Ordinary least squares}.
+
+\begin{align}
+    y &= mx + b \\
+    m &= \frac{\sum(x_i - \bar{x})(y_i - \hat{y})}{\sum(x_i - \bar{x})^2} \\
+    b &= \bar{y} - m * \bar{x})
+\end{align}
+
+\inputminted{python2}{code/machine-learning/linear-regression.py}
+
+
+
+\section{R\'egr\'ession lin\'eaire multiple}
+
+\begin{equation}
+	y = b_0 + b_1x_1 + b_2x_2 + \cdots + b_nx_n
+\end{equation}

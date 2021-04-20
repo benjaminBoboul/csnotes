@@ -1,14 +1,17 @@
+TEX = lualatex
+TEXFLAGS = --shell-escape
+.PHONY = default clean
+TEXFILES = find . -name "*.tex"
 
-CC = lualatex
-DEPENDENCIES := $(shell find notes/machines-learning/* -name *.tex)
 
-.PHONY=machine-learning
 
-machine-learning: ${DEPENDENCIES}
-	$(CC) --output-directory=. --shell-escape notes/$@/$@.tex
-	makeglossaries -d . $@
-	biber -output-directory=. $@
-	$(CC) --output-directory=. --shell-escape notes/$@/$@.tex
+default: out/cs-notes.pdf
 
-clear:
-	find ./* -name *.{aux,log,pdf} -delete
+out:
+	mkdir -p $@
+
+out/%.pdf: out notes/**/*.tex
+	$(TEX) ${TEXFLAGS} --output-directory=$(@D) $*.tex
+	makeglossaries -d $(@D) $*
+	biber --output-directory $(@D) $*
+	$(TEX) ${TEXFLAGS} --output-directory=$(@D) $*.tex

@@ -19,52 +19,57 @@ Nous retrouvons diverses utilisations de \gls{SVM} dans la résolutions de probl
 
 \section{Introduction}
 
-Pour commencer nous parlerons de classification binaire (classe 0 et classe 1). Considérons un vecteur de poids $\mathbf w = \langle \begin{matrix} w_1 & \dots & w_N \end{matrix} \rangle^T$, un vecteur d'entrée $\mathbf x = \langle \begin{matrix} x_1 & \dots & x_N \end{matrix} \rangle^T$ ainsi qu'un biais $b$ qui se révèle être un nombre réel.
-From this equation, we can determine whether or not a new entry vector $\mathbf x$ belongs to which class.
-If $h(\mathbf x) \geq 0$ then $\mathbf x$ is marked as positive and vice versa:
+Pour commencer nous parlerons de classification binaire (classe 0 et classe 1). Considérons un vecteur de poids $\vec w = \langle \begin{matrix} w_1 & \dots & w_N \end{matrix} \rangle^T$, un vecteur d'entrée $\vec x = \langle \begin{matrix} x_1 & \dots & x_N \end{matrix} \rangle^T$ ainsi qu'un biais $b$ qui se révèle être un nombre réel.
+From this equation, we can determine whether or not a new entry vector $\vec x$ belongs to which class.
+If $h(\mathbf x) \geq 0$ then $\vec x$ is marked as positive and vice versa:
 
 \begin{equation}
-	h(\mathbf x) = \mathbf w^T\mathbf x + b \begin{cases}h(\mathbf x)\geq 0\to \text{class 1} \\h(\mathbf x)< 0\to \text{class 2}\end{cases}
+	h(\vec x) = \vec w^T\vec x + b
+	\begin{cases}
+		h(\vec x)\geq 0\to \text{class 1} \\
+		h(\vec x)< 0\to \text{class 2}
+	\end{cases}
 \end{equation}
 
-\subsection{Train SVMs}
+\subsection{Train \gls{SVM}s}\label{subsec:train-svm}
 
-An hyperplane try to maximize margin, in other terms, the minimal distance between training vectors and hyperplane.
-Thoses training vectors located at this minimal distance are called \textit{support vectors}.
+En utilisant des \gls{SVM}s, nous cherchons un hyperplan qui maximize les marges des vecteurs d'entrainement les plus proches.
 
-\paragraph{Compute margin}
+Ces vecteurs \`a proximit\'e sont essentiels pour l'estimation de l'hyperplan, nous les appelonts \textit{vecteur support}.
 
-Given a vector $\mathbf x_k$, we can compute its distance with $h_{w,b}$ :
+\paragraph{Calcul de marge}
+
+Prenons un vecteur $\vec x_k$, nous pouvons calculer une distance par rapport \`a un plan avec $h_{w,b}$.
 
 \begin{equation}
-	\frac{l_k(\mathbf w^T\mathbf x_k + b)}{\lVert \mathbf w \rVert}
+	h_{w, b} = \frac{l_k(\vec w^T\vec x_k + b)}{\lVert \vec w \rVert}
 \end{equation}
 
-where $\lVert \mathbf w \rVert$ is the euclidian distance, the general formula regardless of the size of the dimensions ($N$) is given by:
+where $\lVert \vec w \rVert$ is the euclidian distance, the general formula regardless of the size of the dimensions ($N$) is given by:
 \begin{equation}
-	\lVert \mathbf w \rVert = \sqrt{\sum_{i=1}^N x_i^2}
+	\lVert \vec w \rVert = \sqrt{\sum_{i=1}^N x_i^2}
 \end{equation}
 
 The margin of an hyperplane is the smallest distance to one of the support vector and it's obtain by computing the following formula:
 
 \begin{equation}
-	\min_k \frac{l_k(\mathbf w^T\mathbf x_k + b)}{\lVert \mathbf w \rVert}
+	\min_k \frac{l_k(\vec w^T\vec x_k + b)}{\lVert \vec w \rVert}
 \end{equation}
 
 Since we're looking to maximize margin, \textit{find the hyperplane with the largest margin}, we'll keep the maximum value in functions of $w$ and $b$ with the following equation:
 
 \begin{equation}
-	\arg\max_{w,b}\min_k \frac{l_k(\mathbf w^T\mathbf x_k + b)}{\lVert \mathbf w \rVert}
+	\arg\max_{w,b}\min_k \frac{l_k(\vec w^T\vec x_k + b)}{\lVert \vec w \rVert}
 \end{equation}
 
 \begin{equation}
-	\min_{w,b,\xi} \frac{1}{2} \lVert \mathbf w \rVert ^2 + C\sum_{i=1}^m \xi_i^p
+	\min_{w,b,\xi} \frac{1}{2} \lVert \vec w \rVert ^2 + C\sum_{i=1}^m \xi_i^p
 \end{equation}
 
 
 \section{Kernel trick}
 
-Here is a non-exhaustive list of different kernels available to our case:
+Voici une liste non-exhaustive de diff\'erents noyaux \`a notre disposition :
 \begin{description}
 	\item[Polynomial] $K(x, x\prime) = (\alpha x^T x\prime + \lambda )^d$
 	\item[Gaussien] $K(x, x\prime) = \exp(-\frac{\lVert x - x\prime \rVert^2}{2\sigma^2})$
