@@ -12,6 +12,16 @@
 	Si ce document se r\'ev\`ele vous être utile ou que vous remarquez des erreurs de ma part, merci de me communiquer toutes remarques.
 	Contact: benjamin.boboul@imt-lille-douai.org
 
+	\part{Feature engineering \& preprocessing}
+
+	\paragraph{StandarScaler} \textit{Scikit-learn} propose diverses fonction de prétraitement, \textit{StandarScaler} s'assure que les échantillons aient une moyenne nulle et une variance de 1.
+
+	\paragraph{RobustScaler} Similaire à \textit{StandarScaler}, 
+
+	\paragraph{PCA} L'analyse en composantes principales (ACP) consiste à calculer les composantes principales et à les utiliser pour effectuer un changement de base sur les données, en utilisant parfois uniquement les quelques premières composantes principales et en ignorant le reste. 
+	L'ACP est utilisée dans l'analyse exploratoire des données et pour élaborer des modèles prédictifs.
+	Elle est couramment utilisée pour la réduction de la dimensionnalité en projetant chaque point de données sur seulement les quelques premières composantes principales afin d'obtenir des données de plus faible dimension tout en préservant autant que possible la variation des données.
+
 	\part{Supervised learning}
 
 	\input{notes/machine-learning/introduction.tex}
@@ -44,14 +54,17 @@
 
 
 	\chapter{Clustering}
-	Utiliser un algorithme de \textit{clustering} vise à identifier différentes classes d'un jeu de données. Pour ce faire, on identifie plusieurs sous-ensembles que l'on groupe en fonction de leurs similarités.
+	Utiliser un algorithme de \textit{clustering} vise à identifier différentes classes d'un jeu de données.
+	Pour ce faire, on identifie plusieurs sous-ensembles que l'on groupe en fonction de leurs similarités.
 
 	\section{K-means}
 
 
 	\section{DBSCAN}
-	\textsc{dbscan} utilise un paramètre \textit{min\_samples} pour identifier les sous-ensembles de taille suffisante. Si deux sous-ensembles sont à proximité, celui dont la densité est la plus grande l'emporte sur le second.
+	\textsc{dbscan} utilise un paramètre \textit{min\_samples} pour identifier les sous-ensembles de taille suffisante.
+	Si deux sous-ensembles sont à proximité, celui dont la densité est la plus grande l'emporte sur le second.
 
+	\inputminted{python}{code/machine-learning/unsupervised-learning/dbscan.py}
 
 	\chapter{Feature Extraction}
 
