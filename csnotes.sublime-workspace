@@ -151,24 +151,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "cs-notes.tex",
-			"settings":
-			{
-				"buffer_size": 1701,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "code/machine-learning/unsupervised-learning/dbscan.py",
-			"settings":
-			{
-				"buffer_size": 1545,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/Makefile/Make.sublime-build",
 	"build_system_choices":
@@ -392,19 +374,22 @@
 		"/home/benjamin/IdeaProjects/computersciencesnotes/code/machine-learning/unsupervised-learning",
 		"/home/benjamin/IdeaProjects/computersciencesnotes/common",
 		"/home/benjamin/IdeaProjects/computersciencesnotes/notes",
-		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning"
+		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning",
+		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/unsupervised",
+		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/unsupervised/SOM"
 	],
 	"file_history":
 	[
+		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/unsupervised/SOM/SOM.tex",
+		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/machine-learning.tex",
+		"/home/benjamin/IdeaProjects/computersciencesnotes/cs-notes.tex",
+		"/home/benjamin/IdeaProjects/computersciencesnotes/code/machine-learning/unsupervised-learning/dbscan.py",
+		"/home/benjamin/IdeaProjects/computersciencesnotes/code/machine-learning/unsupervised-learning/optics.py",
 		"/home/benjamin/IdeaProjects/computersciencesnotes/csnotes.sublime-project",
 		"/home/benjamin/IdeaProjects/computersciencesnotes/Makefile",
 		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/linear-regression/linear-regression.tex",
-		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/unsupervised/SOM/SOM.tex",
 		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/svm/svm.tex",
 		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/introduction.tex",
-		"/home/benjamin/IdeaProjects/computersciencesnotes/notes/machine-learning/machine-learning.tex",
-		"/home/benjamin/IdeaProjects/computersciencesnotes/code/machine-learning/unsupervised-learning/dbscan.py",
-		"/home/benjamin/IdeaProjects/computersciencesnotes/cs-notes.tex",
 		"/home/benjamin/IdeaProjects/computersciencesnotes/out/cs-notes.pdf",
 		"/home/benjamin/Documents/git/devChallenges/images-uploader/src/sass/style.scss",
 		"/home/benjamin/Documents/git/devChallenges/images-uploader/node_modules/lodash/clamp.js",
@@ -466,6 +451,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ax",
 			"IBMPlexSans",
 			"JetBrainsMono"
 		],
@@ -485,73 +471,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "cs-notes.tex",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1701,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								521,
-								521
-							]
-						],
-						"settings":
-						{
-							"lsp_active": true,
-							"lsp_language":
-							{
-								"texlab": "latex"
-							},
-							"show_definitions": false,
-							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2263.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "code/machine-learning/unsupervised-learning/dbscan.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1545,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1332,
-								1332
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 240.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
