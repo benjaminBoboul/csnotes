@@ -22,6 +22,21 @@
 	L'ACP est utilisée dans l'analyse exploratoire des données et pour élaborer des modèles prédictifs.
 	Elle est couramment utilisée pour la réduction de la dimensionnalité en projetant chaque point de données sur seulement les quelques premières composantes principales afin d'obtenir des données de plus faible dimension tout en préservant autant que possible la variation des données.
 
+	Pour ce faire, l'ACP s'intéresse à la corrélation entre les caractéristiques. 
+	Si la corrélation est très élevée parmi un sous-ensemble de caractéristiques, l'ACP tentera de combiner les caractéristiques hautement corrélées et de représenter ces données avec un plus petit nombre de caractéristiques linéairement non corrélées.
+	L'algorithme continue d'effectuer cette réduction de corrélation, en trouvant les directions de variance maximale dans les données originales à haute dimension et en les projetant sur un espace de plus petite dimension.
+	Ces composantes nouvellement dérivées sont connues sous le nom de composantes principales.
+
+	\paragraph{Incremental PCA} Pour les ensembles de données très volumineux qui ne peuvent pas tenir en mémoire, nous pouvons effectuer l'ACP de manière incrémentale par petits lots, où chaque lot peut tenir en mémoire. La taille du lot peut être définie manuellement ou déterminée automatiquement. Cette forme d'ACP basée sur les lots est connue sous le nom d'ACP incrémentale.
+
+	\paragraph{Sparce PCA} L'algorithme normal de l'ACP recherche des combinaisons linéaires dans toutes les variables d'entrée, réduisant l'espace de caractéristiques original aussi dense que possible.
+	Mais pour certains problèmes d'apprentissage automatique, un certain degré de dispersion peut être préféré.
+	Une version de l'ACP qui conserve un certain degré de dispersion, contrôlé par un hyperparamètre appelé alpha \(\alpha\), est connue sous le nom d'ACP éparse.
+	L'algorithme PCA éparse recherche des combinaisons linéaires dans seulement certaines des variables d'entrée, réduisant l'espace caractéristique original jusqu'à un certain degré, mais pas de manière aussi compacte que l'ACP normale.
+
+	\paragraph{Kernel PCA}
+	L'ACP normale, l'ACP incrémentale et l'ACP éparse projettent linéairement les données d'origine dans un espace de dimension inférieure, mais il existe également une forme non linéaire d'ACP, appelée ACP à noyau, qui exécute une fonction de similarité sur des paires de points de données d'origine afin d'effectuer une réduction non linéaire de la dimension.
+
 	\part{Supervised learning}
 
 	\input{notes/machine-learning/introduction.tex}
