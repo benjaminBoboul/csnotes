@@ -18,3 +18,5 @@ _minted*
 *.swp
 .idea
 out
+*.sublime-workspace
+
